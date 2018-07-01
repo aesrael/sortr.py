@@ -1,11 +1,10 @@
 from itertools import chain
-from os import listdir, walk
+from os import listdir, walk, rename
 from os.path import expanduser, isfile, join
+import mimetypes
 
-# import the python magic module using pip install python-magic
-import magic
+mimetypes.init()
 
-mime = magic.Magic(mime=True)
 # get home dir
 homeDir = expanduser("~")
 
@@ -18,13 +17,13 @@ downloadsDir = '%s/Downloads/test' % (homeDir)
 for root, dirs, files in walk(downloadsDir):
     # loop through all the files
     for file in files:
-        # print(file)
         file = '%s/%s' % (downloadsDir, file)
+        # check if it is a file
         if(isfile(file)):
             print(file)
-            mime.from_file(file)
-
-# sort function
+            sort(file)
 
 
-# def sort(fileType, directory):
+def sort(file, mime, dst):
+    if mimetypes.guess_type(file) == ('application/pdf', None):
+        rename(file, dst)
