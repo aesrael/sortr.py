@@ -5,10 +5,12 @@ from os.path import expanduser, isfile, join
 # get home dir
 homeDir = expanduser("~")
 
+dirInput = raw_input('enter directory to sort eg downloads,desktop etc : ')
 
 # sortDir, set dir to sort here, default dir is 'home/user/Downloads'
-sortDir = '%s/Downloads/test' % (homeDir)
+sortDir = '%s/%s' % (homeDir,dirInput.capitalize())
 
+print(sortDir, 'directory')
 if (path.exists(sortDir) == True):
     print('sorting %s...' % (sortDir))
 else:
@@ -33,7 +35,7 @@ def sort(exts, dst):
             if(isfile(filePath)):
                 # loop through the extensions argument list
                 for ext in exts:
-                    
+
                     # find filename with one of the extension type
                     if filePath.lower().endswith('.%s' % (ext)):
                         newFilePath = '%s/%s' % (dst, file)
