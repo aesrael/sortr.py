@@ -8,41 +8,46 @@ mimetypes.init()
 # get home dir
 homeDir = expanduser("~")
 
-downloadsDir = '%s/Downloads/test' % (homeDir)
+sortDir = '%s/Downloads/test' % (homeDir)
 
 # folders to sort to
 music = '%s/Music' % (homeDir)
-video = '%s/Video' % (homeDir)
+videos = '%s/Videos' % (homeDir)
 pictures = '%s/Pictures' % (homeDir)
 documents = '%s/Documents' % (homeDir)
 
+
 def sort(exts, dst):
     # get all files in the downloads directory
-    for root, dirs, files in walk(downloadsDir):
+    for root, dirs, files in walk(sortDir):
         # loop through all the files
         for file in files:
+            # create path to file
             path = join(root, file)
             filePath = path
             # check if it is a file
             if(isfile(filePath)):
+                # loop through the extensions argument list
                 for ext in exts:
-                    if filePath.find(ext) > -1:
-                        rename(filePath, dst)
-                        print('%s found' % (file))
-                        # print(filePath,dst)
+                    # find filename with one of the extension type
+                    print('.%s' % (ext))
+
+                    if filePath.lower().endswith('.%s' % (ext)):
+                        newFilePath = '%s/%s' % (dst, file)
+
+                        #change dir of file(sort file)
+                        rename(filePath, newFilePath)
+                        print('%s found and sorted' % (file))
+                    else:
+                        break
+                        print('no more files to sort')
 
 
-# sort mp3 files
+# sort music files
 sort(['mp3', 'ogg', 'wav'], music)
-# sort video files
-sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'mpeg'], video)
-# sort books
-sort(['pdf', 'epub'], documents)
-# sort zip, gzip and rar files
-sort(['zip', 'gzip', 'rar'], documents)
-# sort apps
-sort(['dmg', 'exe'], documents)
-# sort pictures
-sort(['png', 'jpeg', 'jpg'], pictures)
-# sort documents
-sort(['doc', 'ppt'], documents)
+# # sort videos
+# sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'mpeg'], videos)
+# # sort documents and utils
+# sort(['zip', 'gzip', 'rar', 'pdf', 'epub', 'dmg', 'exe', 'doc', 'ppt'], documents)
+# # sort pictures
+# sort(['png', 'jpeg', 'jpg'], pictures)
