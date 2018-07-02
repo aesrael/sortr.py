@@ -2,12 +2,14 @@
 
 ## no libraries required, all you need is to have python installed
 
-## default directory to sort is Downloads, you can change this by
+## default directory to sort is Downloads
 
-## `sortDir = '%s/Dir/to/sort/' % (homeDir)`
+## run this project and input directory you wanna sort in the cli prompt
 
 ## clone project `$ git clone https://github.com/israeladura/sortr.py`
 
 ## run in cli by `python sortr.py`
+
+## input directory to sort or it falls back to Downloads
 
 ## contribution is welcome 😁
