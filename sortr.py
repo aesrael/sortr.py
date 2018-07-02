@@ -1,14 +1,18 @@
 from itertools import chain
-from os import listdir, walk, rename
+from os import listdir, walk, rename, path
 from os.path import expanduser, isfile, join
-import mimetypes
-
-mimetypes.init()
 
 # get home dir
 homeDir = expanduser("~")
 
-sortDir = '%s/Downloads/test' % (homeDir)
+
+# sortDir, set dir to sort here, default dir is 'home/user/Downloads'
+sortDir = '%s/Downloads/' % (homeDir)
+
+if (path.exists(sortDir) == True):
+    print('sorting %s' % (sortDir))
+else:
+    print('%s not a directory, set directory to sort' % (sortDir))
 
 # folders to sort to
 music = '%s/Music' % (homeDir)
@@ -35,7 +39,7 @@ def sort(exts, dst):
                     if filePath.lower().endswith('.%s' % (ext)):
                         newFilePath = '%s/%s' % (dst, file)
 
-                        #change dir of file(sort file)
+                        # change dir of file(sort file)
                         rename(filePath, newFilePath)
                         print('%s found and sorted' % (file))
                     else:
@@ -45,9 +49,9 @@ def sort(exts, dst):
 
 # sort music files
 sort(['mp3', 'ogg', 'wav'], music)
-# # sort videos
-# sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'mpeg'], videos)
-# # sort documents and utils
-# sort(['zip', 'gzip', 'rar', 'pdf', 'epub', 'dmg', 'exe', 'doc', 'ppt'], documents)
-# # sort pictures
-# sort(['png', 'jpeg', 'jpg'], pictures)
+# sort videos
+sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'mpeg'], videos)
+# sort documents and utils
+sort(['zip', 'gzip', 'rar', 'pdf', 'epub', 'dmg', 'exe', 'doc', 'ppt'], documents)
+# sort pictures
+sort(['png', 'jpeg', 'jpg'], pictures)
