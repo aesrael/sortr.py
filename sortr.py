@@ -7,7 +7,7 @@ homeDir = expanduser("~")
 
 
 # sortDir, set dir to sort here, default dir is 'home/user/Downloads'
-sortDir = '%s/Downloads/' % (homeDir)
+sortDir = '%s/Downloads/test' % (homeDir)
 
 if (path.exists(sortDir) == True):
     print('sorting %s' % (sortDir))
