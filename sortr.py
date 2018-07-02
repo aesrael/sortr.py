@@ -10,7 +10,7 @@ homeDir = expanduser("~")
 sortDir = '%s/Downloads/test' % (homeDir)
 
 if (path.exists(sortDir) == True):
-    print('sorting %s' % (sortDir))
+    print('sorting %s...' % (sortDir))
 else:
     print('%s not a directory, set directory to sort' % (sortDir))
 
@@ -33,17 +33,17 @@ def sort(exts, dst):
             if(isfile(filePath)):
                 # loop through the extensions argument list
                 for ext in exts:
+                    
                     # find filename with one of the extension type
-                    print('.%s' % (ext))
-
                     if filePath.lower().endswith('.%s' % (ext)):
                         newFilePath = '%s/%s' % (dst, file)
+
 
                         # change dir of file(sort file)
                         rename(filePath, newFilePath)
                         print('%s found and sorted' % (file))
                     else:
-                        break
+                        continue
                         print('no more files to sort')
 
 
@@ -55,3 +55,5 @@ sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'mpeg'], videos)
 sort(['zip', 'gzip', 'rar', 'pdf', 'epub', 'dmg', 'exe', 'doc', 'ppt'], documents)
 # sort pictures
 sort(['png', 'jpeg', 'jpg'], pictures)
+
+
