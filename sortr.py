@@ -1,16 +1,17 @@
 from itertools import chain
-from os import listdir, walk, rename, path
+from os import walk, rename, path
 from os.path import expanduser, isfile, join
 
 # get home dir
 homeDir = expanduser("~")
 
-dirInput = raw_input('enter directory to sort eg downloads,desktop etc : ')
+# input directory to sort prompt
+dirInput = raw_input(
+    'enter directory to sort eg downloads,desktop etc : ') or 'Downloads'
 
 # sortDir, set dir to sort here, default dir is 'home/user/Downloads'
-sortDir = '%s/%s' % (homeDir,dirInput.capitalize())
+sortDir = '%s/%s' % (homeDir, dirInput.capitalize())
 
-print(sortDir, 'directory')
 if (path.exists(sortDir) == True):
     print('sorting %s...' % (sortDir))
 else:
@@ -40,22 +41,19 @@ def sort(exts, dst):
                     if filePath.lower().endswith('.%s' % (ext)):
                         newFilePath = '%s/%s' % (dst, file)
 
-
                         # change dir of file(sort file)
                         rename(filePath, newFilePath)
                         print('%s found and sorted' % (file))
                     else:
                         continue
-                        print('no more files to sort')
+                    print('no more files to sort')
 
 
 # sort music files
 sort(['mp3', 'ogg', 'wav'], music)
 # sort videos
-sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'mpeg'], videos)
+sort(['mp4', 'avi', 'flv', 'vob', 'mpg','webm', 'mpeg'], videos)
 # sort documents and utils
 sort(['zip', 'gzip', 'rar', 'pdf', 'epub', 'dmg', 'exe', 'doc', 'ppt'], documents)
 # sort pictures
 sort(['png', 'jpeg', 'jpg'], pictures)
-
-
