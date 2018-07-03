@@ -1,7 +1,9 @@
 from itertools import chain
 from os import walk, rename, path
 from os.path import expanduser, isfile, join
+from timeit import default_timer
 
+start = default_timer()
 # get home dir
 homeDir = expanduser("~")
 
@@ -49,11 +51,16 @@ def sort(exts, dst):
                     print('no more files to sort')
 
 
+
 # sort music files
 sort(['mp3', 'ogg', 'wav'], music)
 # sort videos
-sort(['mp4', 'avi', 'flv', 'vob', 'mpg','webm', 'mpeg'], videos)
+sort(['mp4', 'avi', 'flv', 'vob', 'mpg', 'webm', 'mpeg'], videos)
 # sort documents and utils
 sort(['zip', 'gzip', 'rar', 'pdf', 'epub', 'dmg', 'exe', 'doc', 'ppt'], documents)
 # sort pictures
 sort(['png', 'jpeg', 'jpg'], pictures)
+
+stop = default_timer()
+
+print('time taken: %s secs.' % (stop-start))
