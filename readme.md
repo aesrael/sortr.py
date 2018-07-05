@@ -1,4 +1,4 @@
-### sort files in your machine (works for linux, windows and mac)
+### sort files in your machine (works for linux, windows and mac) with this python3 script
 
 ### no libraries required, all you need is to have python installed
 
@@ -8,7 +8,7 @@
 
 ### clone project `$ git clone https://github.com/israeladura/sortr.py`
 
-### run in cli by `python sortr.py`
+### run in cli by `python3 sortr.py`
 
 ### input directory to sort or it falls back to Downloads
 
