@@ -3,13 +3,13 @@ from os import walk, rename, path
 from os.path import expanduser, isfile, join
 from timeit import default_timer
 
-start = default_timer()
+
 # get home dir
 homeDir = expanduser("~")
 
 # input directory to sort prompt
-dirInput = raw_input(
-    'enter directory to sort eg downloads,desktop etc : ') or 'Downloads'
+dirInput = str(input(
+    'enter directory to sort eg downloads,desktop etc : ')) or 'Downloads'
 
 # sortDir, set dir to sort here, default dir is 'home/user/Downloads'
 sortDir = '%s/%s' % (homeDir, dirInput.capitalize())
@@ -25,6 +25,10 @@ videos = '%s/Videos' % (homeDir)
 pictures = '%s/Pictures' % (homeDir)
 documents = '%s/Documents' % (homeDir)
 
+# start timing
+start = default_timer()
+
+# sort function
 
 def sort(exts, dst):
     # get all files in the downloads directory
