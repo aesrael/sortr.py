@@ -1,15 +1,23 @@
-### sort files in your machine (works for linux, windows and mac) with this python3 script
+# sortr
 
-### no libraries required, all you need is to have python installed
+sort files in your machine (works for linux, windows and mac) with this python3 script
 
-### default directory to sort is Downloads
+no libraries required, all you need is to have python installed
 
-### run this project and input directory you wanna sort in the cli prompt
+## Installation
+install python 3
 
-### clone project `$ git clone https://github.com/israeladura/sortr.py`
+clone project 
 
-### run in cli by `python3 sortr.py`
+`$ git clone https://github.com/israeladura/sortr.py`
+## usage
+```bash
+python3 sortr.py dir_to_sort
+```
 
-### input directory to sort or it falls back to Downloads
+## Contributing
+Pull requests are welcome.
+Please make sure to update tests as appropriate.
 
-### contribution is welcome 😁
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
